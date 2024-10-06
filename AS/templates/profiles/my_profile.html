@@ -1,15 +1,39 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Profile</title>
-</head>
-<body>
-    <h1>Welcome, {{ user.username }}!</h1>
-    <p>Email: {{ user.email }}</p>
-    <p>Date joined: {{ user.date_joined }}</p>
-    <a href="{% url 'my_auctions' %}">My Auctions</a> | 
-    <a href="{% url 'my_bids' %}">My Bids</a>
-</body>
-</html>
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block title %}My Profile - AuctionSite{% endblock %}
+
+{% block navbar %}
+    {{ block.super }}
+{% endblock navbar %}
+
+{% block extra_css %}
+    {{ block.super }}
+    <link rel="stylesheet" href="{% static 'css/profile.css' %}">
+{% endblock extra_css %}
+
+{% block content %}
+    <div class="uk-section uk-section-default">
+        <div class="uk-container">
+            <h1>Welcome, {{ user.username }}!</h1>
+            <div class="uk-card uk-card-default uk-card-body">
+                <p><strong>Email:</strong> {{ user.email }}</p>
+                <p><strong>Date joined:</strong> {{ user.date_joined }}</p>
+            </div>
+            <div class="uk-margin-top">
+                <a href="{% url 'my_auctions' %}" class="uk-button uk-button-primary">My Auctions</a>
+                <a href="{% url 'my_bids' %}" class="uk-button uk-button-secondary">My Bids</a>
+            </div>
+        </div>
+    </div>
+{% endblock content %}
+
+{% block footer %}
+    {{ block.super }}
+{% endblock footer %}
+
+{% block scripts %}
+    {{ block.super }}
+    <script src="{% static 'js/profile.js' %}"></script>
+{% endblock scripts %}

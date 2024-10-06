@@ -1,40 +1,66 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Auctions</title>
-</head>
-<body>
-    <h1>My Auctions</h1>
-    
-    {% if auctions %}
-        <ul>
-            {% for auction in auctions %}
-                <li>
-                    <strong>{{ auction.name }}</strong><br>
-                    Description: {{ auction.description }}<br>
-                    Starting Price: ${{ auction.starting_price }}<br>
-                    Current Price: ${{ auction.current_price }}<br>
-                    <strong>End Time:</strong> {{ auction.end_time }}<br>
-                    <a href="{% url 'auction_detail' auction.id %}">View Auction</a><br>
-                    <a href="{% url 'update_auction' auction.id %}">Update Auction</a><br>
-                    <form action="{% url 'delete_auction' auction.id %}" method="POST" style="display:inline;">
-                        {% csrf_token %}
-                        <button type="submit">Delete Auction</button>
-                    </form>
-                    <form action="{% url 'extend_auction' auction.id %}" method="POST" style="display:inline;">
-                        {% csrf_token %}
-                        <input type="number" name="additional_days" placeholder="Days to extend" min="1" required>
-                        <button type="submit">Extend Auction</button>
-                    </form>
-                </li>
-            {% endfor %}
-        </ul>
-    {% else %}
-        <p>You have not created any auctions yet.</p>
-    {% endif %}
-    
-    <a href="{% url 'my_profile' %}">Back to Profile</a>
-</body>
-</html>
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block title %}My Auctions - AuctionSite{% endblock %}
+
+{% block navbar %}
+    {{ block.super }}
+{% endblock navbar %}
+
+{% block extra_css %}
+    {{ block.super }}
+    <link rel="stylesheet" href="{% static 'css/home.css' %}">
+{% endblock extra_css %}
+
+{% block content %}
+    <div class="uk-section uk-section-default">
+        <div class="uk-container">
+            <h1>My Auctions</h1>
+            
+            {% if auctions %}
+                <ul class="uk-list uk-list-divider">
+                    {% for auction in auctions %}
+                        <li>
+                            <div class="uk-card uk-card-default uk-card-body uk-margin">
+                                <h3 class="uk-card-title">{{ auction.name }}</h3>
+                                <p>Description: {{ auction.description }}</p>
+                                <p>Starting Price: ${{ auction.starting_price }}</p>
+                                <p>Current Price: ${{ auction.current_price }}</p>
+                                <p><strong>End Time:</strong> {{ auction.end_time }}</p>
+                                <div class="uk-margin">
+                                    <a href="{% url 'auction_detail' auction.id %}" class="uk-button uk-button-primary">View Auction</a>
+                                    <a href="{% url 'update_auction' auction.id %}" class="uk-button uk-button-secondary">Update Auction</a>
+                                </div>
+                                <form action="{% url 'delete_auction' auction.id %}" method="POST" class="uk-display-inline-block">
+                                    {% csrf_token %}
+                                    <button type="submit" class="uk-button uk-button-danger">Delete Auction</button>
+                                </form>
+                                <form action="{% url 'extend_auction' auction.id %}" method="POST" class="uk-display-inline-block uk-margin-left">
+                                    {% csrf_token %}
+                                    <input type="number" name="additional_days" placeholder="Days to extend" min="1" required class="uk-input uk-form-width-small">
+                                    <button type="submit" class="uk-button uk-button-primary">Extend Auction</button>
+                                </form>
+                            </div>
+                        </li>
+                    {% endfor %}
+                </ul>
+            {% else %}
+                <p class="uk-text-lead">You have not created any auctions yet.</p>
+            {% endif %}
+            
+            <div class="uk-margin-top">
+                <a href="{% url 'my_profile' %}" class="uk-button uk-button-primary">Back to Profile</a>
+            </div>
+        </div>
+    </div>
+{% endblock content %}
+
+{% block footer %}
+    {{ block.super }}
+{% endblock footer %}
+
+{% block scripts %}
+    {{ block.super }}
+    <script src="{% static 'js/custom.js' %}"></script>
+{% endblock scripts %}
