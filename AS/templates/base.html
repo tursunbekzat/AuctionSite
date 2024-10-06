@@ -29,9 +29,9 @@
                 <li><a href="{% url 'current_auctions' %}">🔨 Auctions</a></li>
                 {% if user.is_authenticated %}
                 <li><a href="{% url 'create_auction' %}">➕ Create Auction</a></li>
-                <li><a href="#">👤 My Profile</a></li>
-                <li><a href="#">📦 My Auction</a></li>
-                <li><a href="#">💰 My Bids</a></li>
+                <li><a href="{% url 'my_profile' %}">👤 My Profile</a></li>
+                <li><a href="{% url 'my_auctions' %}">📦 My Auction</a></li>
+                <li><a href="{% url 'my_bids' %}">💰 My Bids</a></li>
                 <li><a href="{% url 'signout' %}">🚪 Sign Out</a></li>
                 {% else %}
                 <li><a href="{% url 'signup' %}">📝 Sign Up</a></li>
