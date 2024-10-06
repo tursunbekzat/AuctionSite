@@ -4,6 +4,7 @@ from core.models import *
 from django.contrib.auth.decorators import login_required
 from .forms import ProductForm 
 from django.core.exceptions import ValidationError
+from django.contrib import messages
 
 
 def home(request):
@@ -53,7 +54,7 @@ def make_bid_view(request, product_id):
                         amount=float(bid_amount)
                     )
                     bid.save()
-
+                    messages.success(request, "Ваша ставка была успешно добавлена!")
                     # Обновляем текущую цену аукциона
                     product.current_price = bid.amount
                     product.save()
@@ -65,11 +66,16 @@ def make_bid_view(request, product_id):
                         'error': "Аукцион завершен."
                     })
 
-            except ValidationError as e:
-                # Показываем сообщение об ошибке в шаблоне
-                return render(request, 'core/auction_detail.html', {
-                    'product': product,
-                    'error': e.message
-                })
+            # except ValidationError as e:
+            #     # Показываем сообщение об ошибке в шаблоне
+            #     return render(request, 'core/auction_detail.html', {
+            #         'product': product,
+            #         'error': e.message
+            #     })
 
+            except ValidationError as e:
+                messages.error(request, e.message)
+            except ValueError as e:
+                messages.error(request, str(e))
+                
     return render(request, 'core/auction_detail.html', {'product': product})
