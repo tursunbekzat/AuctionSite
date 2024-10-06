@@ -23,6 +23,7 @@
                                 <p>Bid Amount: ${{ bid.amount }}</p>
                                 <p>Date: {{ bid.created_at }}</p>
                                 <a href="{% url 'auction_detail' bid.product.id %}" class="uk-button uk-button-secondary">View Auction</a>
+                                <a href="{% url 'edit_bid' bid.id %}" class="uk-button uk-button-primary">Edit Bid</a>
                             </div>
                         </div>
                     {% endfor %}

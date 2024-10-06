@@ -1,0 +1,91 @@
+
+/* Card styles */
+.uk-card {
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.uk-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+/* Image styles */
+.uk-card-media-top {
+    height: 200px;
+    overflow: hidden;
+}
+
+.uk-card-media-top img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Card body styles */
+.uk-card-body {
+    padding: 20px;
+}
+
+.uk-card-title {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+    color: #333;
+}
+
+/* Price styles */
+.uk-text-bold {
+    color: #000000;
+    font-size: 1.2rem;
+}
+
+/* Button styles */
+.uk-button-text {
+    position: relative;
+    padding: 10px 20px;
+    color: #3498db;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    overflow: hidden;
+    transition: color 0.3s ease;
+}
+
+.uk-button-text::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background-color: #3498db;
+    transition: left 0.3s ease;
+    z-index: -1;
+}
+
+.uk-button-text:hover {
+    color: #fff;
+}
+
+.uk-button-text:hover::before {
+    left: 0;
+}
+
+/* Grid layout */
+.uk-grid {
+    margin-top: 30px;
+}
+
+/* Responsive adjustments */
+@media (max-width: 959px) {
+    .uk-child-width-1-3\@m > * {
+        width: 50%;
+    }
+}
+
+@media (max-width: 639px) {
+    .uk-child-width-1-3\@m > * {
+        width: 100%;
+    }
+}
