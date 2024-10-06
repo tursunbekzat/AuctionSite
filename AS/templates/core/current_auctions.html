@@ -1,0 +1,13 @@
+<!-- templates/core/current_auctions.html -->
+<h1>Current Auctions</h1>
+<ul>
+  {% for auction in auctions %}
+    <li>
+      <a href="{% url 'auction_detail' auction.id %}">
+        {{ auction.name }} - Current Price: ${{ auction.current_price }}
+      </a>
+    </li>
+  {% empty %}
+    <li>No active auctions</li>
+  {% endfor %}
+</ul>
