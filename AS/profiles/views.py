@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
-from core.models import Product
+from core.models import Product, Bid
 
 
 @login_required
@@ -15,4 +15,7 @@ def my_auctions(request):
     return render(request, 'profile/my_auctions.html', {'auctions': auctions})
 
 
-    
+@login_required
+def my_bids(request):
+    bids = Bid.objects.filter(user=request.user)
+    return render(request, 'profile/my_bids.html', {'bids': bids})
