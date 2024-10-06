@@ -17,7 +17,6 @@ class BidAdmin(admin.ModelAdmin):
     list_filter = ('product',)  # Фильтрация по продукту
 
 
-admin.site.register(User)
 admin.site.register(Category, CategoryAdmin)
 admin.site.register(Product, ProductAdmin)
 admin.site.register(Bid, BidAdmin)
