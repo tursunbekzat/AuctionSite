@@ -1,20 +1,68 @@
-<!-- templates/core/auction_detail.html -->
-<h1>{{ product.name }}</h1>
-<p>Description: {{ product.description }}</p>
-<p>Current Price: ${{ product.current_price }}</p>
+{% extends 'base.html' %}
+{% load static %}
 
-{% if user.is_authenticated and product.author != user %}
-  <form method="POST">
-    {% csrf_token %}
-    <label for="bid_amount">Your Bid:</label>
-    <input type="number" step="0.01" name="bid_amount" required>
-    <button type="submit">Place Bid</button>
-  </form>
-  {% if error %}
-    <p style="color: red;">{{ error }}</p>
-  {% endif %}
-{% elif product.author == user %}
-  <p>You cannot bid on your own auction.</p>
-{% else %}
-  <p>Please <a href="{% url 'signin' %}">login</a> to place a bid.</p>
-{% endif %}
+{% block title %}{{ product.name }} - Auction Details{% endblock %}
+
+{% block content %}
+<div class="uk-section">
+  <div class="uk-container">
+      <div class="uk-grid-large" uk-grid>
+          <div class="uk-width-1-2@m">
+              {% if product.image %}
+                  <img src="{{ product.image.url }}" alt="{{ product.name }}" class="uk-width-1-1">
+              {% else %}
+                  <div class="uk-height-large uk-background-muted uk-flex uk-flex-center uk-flex-middle">
+                      <span uk-icon="icon: image; ratio: 3"></span>
+                  </div>
+              {% endif %}
+          </div>
+          <div class="uk-width-1-2@m">
+              <h1 class="uk-heading-medium">{{ product.name }}</h1>
+              <p class="uk-text-lead">Current Price: <span class="uk-text-bold uk-text-primary">${{ product.current_price }}</span></p>
+              <p class="uk-text-meta">Category: {{ product.category.name }}</p>
+              <p class="uk-text-meta">Listed by: {{ product.author.username }}</p>
+              <p class="uk-text-meta">Created: {{ product.created_at|date:"F d, Y" }}</p>
+              <hr class="uk-divider-small">
+              <h3 class="uk-heading-small">Description</h3>
+              <p>{{ product.description }}</p>
+                
+              {% if user.is_authenticated and product.author != user %}
+                  <form method="POST" class="uk-form-stacked">
+                      {% csrf_token %}
+                      <div class="uk-margin">
+                          <label class="uk-form-label" for="bid_amount">Your Bid:</label>
+                          <div class="uk-form-controls">
+                              <input class="uk-input" type="number" step="0.01" name="bid_amount" required>
+                          </div>
+                      </div>
+                      <button class="uk-button uk-button-primary" type="submit">Place Bid</button>
+                  </form>
+                  {% if error %}
+                      <p class="uk-text-danger">{{ error }}</p>
+                  {% endif %}
+              {% elif product.author == user %}
+                  <p class="uk-text-warning">You cannot bid on your own auction.</p>
+              {% else %}
+                  <p>Please <a href="{% url 'signin' %}" class="uk-button uk-button-default">Sign In</a> to place a bid.</p>
+              {% endif %}
+          </div>
+      </div>
+        
+      <div class="uk-margin-large-top">
+          <h3 class="uk-heading-small">Bid History</h3>
+          {% if product.bids.all %}
+              <ul class="uk-list uk-list-divider">
+                  {% for bid in product.bids.all|dictsortreversed:"created_at" %}
+                      <li>
+                          <span class="uk-text-bold">${{ bid.amount }}</span> by {{ bid.user.username }} 
+                          <span class="uk-text-meta">on {{ bid.created_at|date:"F d, Y H:i" }}</span>
+                      </li>
+                  {% endfor %}
+              </ul>
+          {% else %}
+              <p>No bids yet. Be the first to bid!</p>
+          {% endif %}
+      </div>
+  </div>
+</div>
+{% endblock %}

@@ -30,7 +30,7 @@
                 {% if user.is_authenticated %}
                 <li><a href="{% url 'create_auction' %}">➕ Create Auction</a></li>
                 <li><a href="{% url 'my_profile' %}">👤 My Profile</a></li>
-                <li><a href="{% url 'my_auctions' %}">📦 My Auction</a></li>
+                <li><a href="{% url 'my_auctions' %}">📦 My Auctions</a></li>
                 <li><a href="{% url 'my_bids' %}">💰 My Bids</a></li>
                 <li><a href="{% url 'signout' %}">🚪 Sign Out</a></li>
                 {% else %}

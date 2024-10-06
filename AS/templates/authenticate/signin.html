@@ -4,10 +4,9 @@
 
 {% block title %}Sign In - AuctionSite{% endblock %}
 
-{% comment %} {% block navbar %} {% endblock navbar %} {% endcomment %}
-
 {% block extra_css %}
-    <link rel="stylesheet" href="{% static 'css/custom.css' %}">
+    {{ block.super }}
+    <link rel="stylesheet" href="{% static 'css/auth.css' %}">
 {% endblock extra_css %}
 
 {% block content %}
