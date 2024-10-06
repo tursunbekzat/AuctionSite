@@ -9,7 +9,7 @@
 {% endblock navbar %}
 
 {% block extra_css %}
-    <link rel="stylesheet" href="{% static 'css/custom.css' %}">
+    {{ block.super }}
 {% endblock extra_css %}
 
 {% block content %}
@@ -40,19 +40,19 @@
             <div class="uk-grid-small uk-child-width-expand@m" uk-grid>
                 <div>
                     <div class="uk-card uk-card-default uk-card-body uk-animation-slide-top">
-                        <h3 class="uk-card-title">5,000+</h3>
+                        <h3 class="uk-card-title"><span id="active-auctions">0</span></h3>
                         <p>Active Auctions</p>
                     </div>
                 </div>
                 <div>
                     <div class="uk-card uk-card-default uk-card-body uk-animation-slide-top">
-                        <h3 class="uk-card-title">10,000+</h3>
+                        <h3 class="uk-card-title"><span id="registered-users">0</span></h3>
                         <p>Registered Users</p>
                     </div>
                 </div>
                 <div>
                     <div class="uk-card uk-card-default uk-card-body uk-animation-slide-top">
-                        <h3 class="uk-card-title">$1M+</h3>
+                        <h3 class="uk-card-title"><span id="total-sales">0</span></h3>
                         <p>Total Sales</p>
                     </div>
                 </div>
@@ -64,7 +64,7 @@
         <div class="uk-container uk-text-center">
             <h2>Get Started Today!</h2>
             <p class="uk-text-lead">Sign up now to become a part of AuctionSite and start bidding or selling in just a few minutes.</p>
-            <a href="#" class="uk-button uk-button-secondary uk-animation-fade">Join Now</a>
+            <a href="{% url 'signup' %}" class="uk-button uk-button-secondary uk-animation-fade">Join Now</a>
         </div>
     </div>
 {% endblock content %}
@@ -75,4 +75,5 @@
 
 {% block scripts %}
     {{ block.super }}
+    <script src="{% static 'js/custom.js' %}"></script>
 {% endblock scripts %}

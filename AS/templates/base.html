@@ -8,8 +8,9 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>{% block title %}AuctionSite{% endblock %}</title>
     <link rel="stylesheet" href="{% static 'css/uikit.min.css' %}">
-    <link rel="stylesheet" href="{% static 'css/custom.css' %}">
-    {% block extra_css %}{% endblock extra_css %}
+    {% block extra_css %}
+        <link rel="stylesheet" href="{% static 'css/custom.css' %}">
+    {% endblock extra_css %}
 </head>
 
 <body>
