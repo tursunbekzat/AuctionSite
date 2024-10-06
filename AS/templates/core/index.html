@@ -1,0 +1,72 @@
+{% extends 'base.html' %}
+
+{% block title %}Home - SimplifiedAuction{% endblock %}
+
+{% block navbar %}
+    {{ block.super }}
+{% endblock navbar %}
+
+{% block content %}
+    <div class="uk-section uk-section-default">
+        <div class="uk-container">
+            <h1>Welcome to SimplifiedAuction!</h1>
+            <p>Find your next great deal, or auction off your items today. Our platform offers a wide range of categories, including electronics, collectibles, antiques, and more. Whether you are looking for unique items or trying to sell your own, SimplifiedAuction makes the process easy and enjoyable.</p>
+
+            <h2>How It Works</h2>
+            <p>To get started, simply create an account and start browsing auctions. You can bid on items you like or create your own auction to sell your items. Our secure platform ensures that both buyers and sellers have a smooth and trustworthy experience.</p>
+
+            <h2>Why Choose SimplifiedAuction?</h2>
+            <ul class="uk-list uk-list-bullet">
+                <li>Easy-to-use platform for both buyers and sellers.</li>
+                <li>Secure transactions and trustworthy environment.</li>
+                <li>Wide range of categories to explore.</li>
+                <li>Real-time bidding for an exciting auction experience.</li>
+            </ul>
+
+            <h2>Join Our Community</h2>
+            <p>Become a part of our growing community of buyers and sellers. Sign up today and start exploring great deals or list your items for auction. SimplifiedAuction is here to make the auction experience accessible to everyone.</p>
+        </div>
+    </div>
+
+    <div class="uk-section uk-section-muted">
+        <div class="uk-container uk-text-center">
+            <h2>Our Platform in Numbers</h2>
+            <div class="uk-grid-small uk-child-width-expand@m" uk-grid>
+                <div>
+                    <div class="uk-card uk-card-default uk-card-body uk-animation-slide-top">
+                        <h3 class="uk-card-title">5,000+</h3>
+                        <p>Active Auctions</p>
+                    </div>
+                </div>
+                <div>
+                    <div class="uk-card uk-card-default uk-card-body uk-animation-slide-top">
+                        <h3 class="uk-card-title">10,000+</h3>
+                        <p>Registered Users</p>
+                    </div>
+                </div>
+                <div>
+                    <div class="uk-card uk-card-default uk-card-body uk-animation-slide-top">
+                        <h3 class="uk-card-title">$1M+</h3>
+                        <p>Total Sales</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="uk-section uk-section-primary uk-light">
+        <div class="uk-container uk-text-center">
+            <h2>Get Started Today!</h2>
+            <p class="uk-text-lead">Sign up now to become a part of SimplifiedAuction and start bidding or selling in just a few minutes.</p>
+            <a href="{% url 'signup' %}" class="uk-button uk-button-secondary uk-animation-fade">Join Now</a>
+        </div>
+    </div>
+{% endblock content %}
+
+{% block footer %}
+    {{ block.super }}
+{% endblock footer %}
+
+{% block scripts %}
+    {{ block.super }}
+{% endblock scripts %}
