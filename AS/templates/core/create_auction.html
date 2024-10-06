@@ -1,7 +1,86 @@
-<!-- templates/core/create_auction.html -->
-<form method="POST" enctype="multipart/form-data">
-    {% csrf_token %}
-    {{ form.as_p }}  <!-- Отобразит все поля формы -->
-    <button type="submit" class="btn btn-primary">Create Auction</button>
-  </form>
-  
+{% extends 'base.html' %}
+
+{% block title %}
+  Create Auction
+{% endblock %}
+
+{% load static %}
+
+{% block extra_css %}
+  {{ block.super }}
+  <link rel="stylesheet" href="{% static 'css/create.css' %}">
+{% endblock %}
+
+{% block content %}
+  <section class="uk-section">
+    <div class="uk-container uk-container-small">
+      <div class="create-form">
+        <h2>Create New Auction</h2>
+        <form method="POST" enctype="multipart/form-data" class="uk-form-stacked">
+          {% csrf_token %}
+          
+          <div class="form-grid">
+            <div class="form-group">
+              <label for="{{ form.name.id_for_label }}">{{ form.name.label }}</label>
+              {{ form.name }}
+              {% if form.name.help_text %}
+                <small>{{ form.name.help_text }}</small>
+              {% endif %}
+              {% for error in form.name.errors %}
+                <span class="uk-text-danger">{{ error }}</span>
+              {% endfor %}
+            </div>
+
+            <div class="form-group">
+              <label for="{{ form.category.id_for_label }}">{{ form.category.label }}</label>
+              {{ form.category }}
+              {% if form.category.help_text %}
+                <small>{{ form.category.help_text }}</small>
+              {% endif %}
+              {% for error in form.category.errors %}
+                <span class="uk-text-danger">{{ error }}</span>
+              {% endfor %}
+            </div>
+
+            <div class="form-group">
+              <label for="{{ form.starting_price.id_for_label }}">{{ form.starting_price.label }}</label>
+              {{ form.starting_price }}
+              {% if form.starting_price.help_text %}
+                <small>{{ form.starting_price.help_text }}</small>
+              {% endif %}
+              {% for error in form.starting_price.errors %}
+                <span class="uk-text-danger">{{ error }}</span>
+              {% endfor %}
+            </div>
+
+            <div class="form-group">
+              <label for="{{ form.image.id_for_label }}">{{ form.image.label }}</label>
+              {{ form.image }}
+              {% if form.image.help_text %}
+                <small>{{ form.image.help_text }}</small>
+              {% endif %}
+              {% for error in form.image.errors %}
+                <span class="uk-text-danger">{{ error }}</span>
+              {% endfor %}
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="{{ form.description.id_for_label }}">{{ form.description.label }}</label>
+            {{ form.description }}
+            {% if form.description.help_text %}
+              <small>{{ form.description.help_text }}</small>
+            {% endif %}
+            {% for error in form.description.errors %}
+              <span class="uk-text-danger">{{ error }}</span>
+            {% endfor %}
+          </div>
+
+          <div class="form-group">
+            <button type="submit">Create Auction</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </section>
+{% endblock %}

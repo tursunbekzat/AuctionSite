@@ -1,97 +1,119 @@
-  /* Custom styles for navbar */
-  .uk-navbar-container {
-      background-color: #ffffff;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
-  }
+/* General reset to improve cross-browser consistency */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
 
-  .uk-navbar-left {
-      margin-left: 30px;
-  }
+/* Custom styles for navbar */
+.uk-navbar-container {
+    background-color: #fff;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
 
-  .uk-navbar-nav > li > a {
-      color: #333;
-      font-weight: 600;
-      text-transform: uppercase;
-      padding: 0 20px;
-      transition: all 0.3s ease;
-  }
+.uk-navbar-left {
+    margin-left: 2rem; /* using rem for better scalability */
+}
 
-  .uk-navbar-nav > li:hover > a,
-  .uk-navbar-nav > li > a:focus {
-      color: #1e87f0;
-      background-color: rgba(30, 135, 240, 0.1);
-      transform: translateY(-2px);
-  }
+.uk-navbar-nav > li > a {
+    color: #333;
+    font-weight: 600;
+    text-transform: uppercase;
+    padding: 0 1.25rem;
+    transition: color 0.3s ease, background-color 0.3s ease, transform 0.3s ease;
+}
 
-  .uk-navbar-nav > li.uk-active > a {
-      color: #1e87f0;
-      border-bottom: 2px solid #1e87f0;
-  }
+.uk-navbar-nav > li:hover > a,
+.uk-navbar-nav > li > a:focus {
+    color: #1e87f0;
+    background-color: rgba(30, 135, 240, 0.1);
+    transform: translateY(-2px);
+}
 
-  /* Responsive adjustments */
-  @media (max-width: 960px) {
-      .uk-navbar-left {
-          margin-left: 15px;
-      }
-    
-      .uk-navbar-nav > li > a {
-          padding: 0 15px;
-      }
-  }
+.uk-navbar-nav > li.uk-active > a {
+    color: #1e87f0;
+    border-bottom: 2px solid #1e87f0;
+}
 
-  /* Modern card styles */
-  .uk-card {
-      border-radius: 10px;
-      transition: all 0.3s ease;
-  }
+/* Responsive adjustments */
+@media (max-width: 960px) {
+    .uk-navbar-left {
+        margin-left: 1rem;
+    }
 
-  .uk-card:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 10px 20px rgba(0,0,0,0.1);
-  }
+    .uk-navbar-nav > li > a {
+        padding: 0 1rem;
+    }
+}
 
-  /* Enhance typography */
-  h1, h2, h3 {
-      font-weight: 700;
-      letter-spacing: -0.5px;
-  }
+/* Modern card styles */
+.uk-card {
+    border-radius: 0.625rem; /* 10px */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
 
-  .uk-text-lead {
-      font-weight: 300;
-      line-height: 1.6;
-  }
+.uk-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
 
-  /* Improve button styles */
-  .uk-button {
-      border-radius: 30px;
-      text-transform: uppercase;
-      font-weight: 600;
-      transition: all 0.3s ease;
-  }
+/* Improve button styles */
+.uk-button {
+    border-radius: 1.875rem; /* 30px */
+    text-transform: uppercase;
+    font-weight: 600;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
 
-  .uk-button:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-  }
+.uk-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
 
-  /* Add subtle animations */
-  .uk-animation-slide-top {
-      animation-duration: 0.8s;
-  }
+/* Footer styles */
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
 
-  .uk-animation-fade {
-      animation-duration: 1s;
-  }
+main {
+    flex: 1;
+}
 
-  /* Enhance section styles */
-  .uk-section {
-      padding: 60px 0;
-  }
+footer {
+    background-color: #f8f9fa;
+    padding: 1.25rem 0;
+    text-align: center;
+    margin-top: auto;
+}
 
-  .uk-section-muted {
-      background-color: #f8f9fa;
-  }
+footer p {
+    margin: 0.3125rem 0;
+}
 
-  .uk-section-primary {
-      background: linear-gradient(135deg, #1e87f0, #5b6dee);
-  }
+footer a {
+    color: #1e87f0;
+    text-decoration: none;
+}
+
+footer a:hover {
+    text-decoration: underline;
+}
+
+/* Typography and section adjustments */
+h1, h2, h3 {
+    font-weight: 700;
+    letter-spacing: -0.5px;
+}
+
+.uk-text-lead {
+    font-weight: 300;
+    line-height: 1.6;
+}
+
+.uk-section {
+    padding: 3.75rem 0; /* 60px */
+}
