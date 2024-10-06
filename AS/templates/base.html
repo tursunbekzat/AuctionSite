@@ -6,8 +6,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>{% block title %}SimplifiedAuction{% endblock %}</title>
+    <title>{% block title %}AuctionSite{% endblock %}</title>
     <link rel="stylesheet" href="{% static 'css/uikit.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/custom.css' %}">
+    {% block extra_css %}{% endblock extra_css %}
 </head>
 
 <body>
@@ -15,28 +17,23 @@
     <!-- Navigation Bar -->
     <nav class="uk-navbar-container" uk-navbar>
         <div class="uk-navbar-left">
+            <a class="uk-navbar-item uk-logo" href="#">
+                <img src="{% static 'images/logo.png' %}" alt="Logo" width="40" height="40">
+                AuctionSite
+            </a>
+        </div>
+        <div class="uk-navbar-right">
             <ul class="uk-navbar-nav">
-                {% comment %}<li><a href="{% url 'home' %}">Home</a></li>
-                <li><a href="{% url 'auctions' %}">Auctions</a></li>
-                <li><a href="{% url 'signup' %}">Sign Up</a></li>
-                <li><a href="{% url 'login' %}">Sign In</a></li>
+                <li><a href="#">🏠 Home</a></li>
+                <li><a href="#">🔨 Auctions</a></li>
+                <li><a href="#">📝 Sign Up</a></li>
+                <li><a href="#">🔑 Sign In</a></li>
                 {% if user.is_authenticated %}
-                <li><a href="{% url 'create_auction' %}">Create Auction</a></li>
-                <li><a href="{% url 'profile' %}">My Profile</a></li>
-                <li><a href="{% url 'my_auction' %}">My Auction</a></li>
-                <li><a href="{% url 'my_bids' %}">My Bids</a></li>
-                <li><a href="{% url 'logout' %}">Sign Out</a></li>
-                {% endif %}{% endcomment %}
-                <li><a href="#">Home</a></li>
-                <li><a href="#">Auctions</a></li>
-                <li><a href="#">Sign Up</a></li>
-                <li><a href="#">Sign In</a></li>
-                {% if user.is_authenticated %}
-                <li><a href="#">Create Auction</a></li>
-                <li><a href="#">My Profile</a></li>
-                <li><a href="#">My Auction</a></li>
-                <li><a href="#">My Bids</a></li>
-                <li><a href="#">Sign Out</a></li>
+                <li><a href="#">➕ Create Auction</a></li>
+                <li><a href="#">👤 My Profile</a></li>
+                <li><a href="#">📦 My Auction</a></li>
+                <li><a href="#">💰 My Bids</a></li>
+                <li><a href="#">🚪 Sign Out</a></li>
                 {% endif %}
             </ul>
         </div>
@@ -54,7 +51,7 @@
     {% block footer %}
     <!-- Footer -->
     <footer class="uk-text-center uk-padding">
-        <p>&copy; 2024 AuctionSite. All rights reserved.</p>
+        <p>© 2024 AuctionSite. All rights reserved.</p>
         <p><a href="#">About Us</a> | <a href="#">Contact</a></p>
     </footer>
     {% endblock footer %}

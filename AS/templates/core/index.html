@@ -1,21 +1,27 @@
 {% extends 'base.html' %}
 
-{% block title %}Home - SimplifiedAuction{% endblock %}
+{% load static %}
+
+{% block title %}Home - AuctionSite{% endblock %}
 
 {% block navbar %}
     {{ block.super }}
 {% endblock navbar %}
 
+{% block extra_css %}
+    <link rel="stylesheet" href="{% static 'css/custom.css' %}">
+{% endblock extra_css %}
+
 {% block content %}
     <div class="uk-section uk-section-default">
         <div class="uk-container">
-            <h1>Welcome to SimplifiedAuction!</h1>
-            <p>Find your next great deal, or auction off your items today. Our platform offers a wide range of categories, including electronics, collectibles, antiques, and more. Whether you are looking for unique items or trying to sell your own, SimplifiedAuction makes the process easy and enjoyable.</p>
+            <h1>Welcome to AuctionSite!</h1>
+            <p>Find your next great deal, or auction off your items today. Our platform offers a wide range of categories, including electronics, collectibles, antiques, and more. Whether you are looking for unique items or trying to sell your own, AuctionSite makes the process easy and enjoyable.</p>
 
             <h2>How It Works</h2>
             <p>To get started, simply create an account and start browsing auctions. You can bid on items you like or create your own auction to sell your items. Our secure platform ensures that both buyers and sellers have a smooth and trustworthy experience.</p>
 
-            <h2>Why Choose SimplifiedAuction?</h2>
+            <h2>Why Choose AuctionSite?</h2>
             <ul class="uk-list uk-list-bullet">
                 <li>Easy-to-use platform for both buyers and sellers.</li>
                 <li>Secure transactions and trustworthy environment.</li>
@@ -24,7 +30,7 @@
             </ul>
 
             <h2>Join Our Community</h2>
-            <p>Become a part of our growing community of buyers and sellers. Sign up today and start exploring great deals or list your items for auction. SimplifiedAuction is here to make the auction experience accessible to everyone.</p>
+            <p>Become a part of our growing community of buyers and sellers. Sign up today and start exploring great deals or list your items for auction. AuctionSite is here to make the auction experience accessible to everyone.</p>
         </div>
     </div>
 
@@ -57,7 +63,7 @@
     <div class="uk-section uk-section-primary uk-light">
         <div class="uk-container uk-text-center">
             <h2>Get Started Today!</h2>
-            <p class="uk-text-lead">Sign up now to become a part of SimplifiedAuction and start bidding or selling in just a few minutes.</p>
+            <p class="uk-text-lead">Sign up now to become a part of AuctionSite and start bidding or selling in just a few minutes.</p>
             <a href="#" class="uk-button uk-button-secondary uk-animation-fade">Join Now</a>
         </div>
     </div>
