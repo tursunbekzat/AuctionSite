@@ -11,8 +11,8 @@ def home(request):
 
 
 def current_auctions_view(request):
-    # Получаем все аукционы (продукты), у которых есть активные ставки
-    auctions = Product.objects.filter(bids__isnull=False).distinct().order_by('-created_at')
+    # Получаем все активные аукционы, которые еще не истекли
+    auctions = Product.objects.filter(end_time__gt=timezone.now()).distinct().order_by('-created_at')
     
     context = {
         'auctions': auctions
@@ -45,19 +45,25 @@ def make_bid_view(request, product_id):
 
         if bid_amount:
             try:
-                # Создаем новую ставку
-                bid = Bid(
-                    product=product,
-                    user=request.user,
-                    amount=float(bid_amount)
-                )
-                bid.save()
+                if product.is_active():  # Проверяем, активен ли аукцион
+                    # Создаем новую ставку
+                    bid = Bid(
+                        product=product,
+                        user=request.user,
+                        amount=float(bid_amount)
+                    )
+                    bid.save()
 
-                # Обновляем текущую цену аукциона
-                product.current_price = bid.amount
-                product.save()
+                    # Обновляем текущую цену аукциона
+                    product.current_price = bid.amount
+                    product.save()
 
-                return redirect('auction_detail', product_id=product.id)
+                    return redirect('auction_detail', product_id=product.id)
+                else:
+                    return render(request, 'core/auction_detail.html', {
+                        'product': product,
+                        'error': "Аукцион завершен."
+                    })
 
             except ValidationError as e:
                 # Показываем сообщение об ошибке в шаблоне
