@@ -15,7 +15,7 @@
                     <strong>Product: {{ bid.product.name }}</strong><br>
                     Bid Amount: ${{ bid.amount }}<br>
                     Date: {{ bid.created_at }}<br>
-                    <a href="{% url 'auction_detail' bid.product.slug %}">View Auction</a>
+                    <a href="{% url 'auction_detail' bid.product.id %}">View Auction</a>
                 </li>
             {% endfor %}
         </ul>

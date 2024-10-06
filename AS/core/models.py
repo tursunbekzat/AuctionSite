@@ -2,7 +2,8 @@ from django.db import models
 from django.utils.text import slugify
 from django.core.exceptions import ValidationError
 from authenticate.models import User
-
+from django.utils import timezone
+from datetime import timedelta
 
 
 class Category(models.Model):
@@ -25,22 +26,26 @@ class Product(models.Model):
     category = models.ForeignKey('Category', related_name='products', on_delete=models.CASCADE)
     created_at = models.DateTimeField(auto_now_add=True)
     image = models.ImageField(upload_to='products/', null=True, blank=True)
-
     starting_price = models.DecimalField(max_digits=10, decimal_places=2)
-    
     current_price = models.DecimalField(max_digits=10, decimal_places=2, null=True, blank=True)
-
     author = models.ForeignKey(User, related_name='products', on_delete=models.CASCADE)
+    end_time = models.DateTimeField(null=True, blank=True)
 
     def save(self, *args, **kwargs):
         if not self.slug:
             self.slug = slugify(self.name)
         if self.current_price is None:  # Устанавливаем начальную цену как текущую при создании
             self.current_price = self.starting_price
+        if not self.end_time:  # Устанавливаем время окончания аукциона на 3 дня после создания
+            self.end_time = timezone.now() + timedelta(days=3)
         super().save(*args, **kwargs)
 
-    def __str__(self):
-        return self.name
+    def is_active(self):
+        return timezone.now() < self.end_time
+
+    def extend_auction(self, additional_days):
+        self.end_time += timedelta(days=additional_days)
+        self.save()
     
     
 class Bid(models.Model):
