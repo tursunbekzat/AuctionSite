@@ -1,16 +1,53 @@
-<form method="POST">
-    {% csrf_token %}
-    <div>
-      <label for="username">Username:</label>
-      <input type="text" name="username" id="username" required>
-    </div>
-    <div>
-      <label for="password">Password:</label>
-      <input type="password" name="password" id="password" required>
-    </div>
-    <button type="submit">Login</button>
-    {% if error %}
-    <p style="color:red">{{ error }}</p>
-    {% endif %}
-  </form>
-  
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block title %}Sign In - AuctionSite{% endblock %}
+
+{% comment %} {% block navbar %} {% endblock navbar %} {% endcomment %}
+
+{% block extra_css %}
+    <link rel="stylesheet" href="{% static 'css/custom.css' %}">
+{% endblock extra_css %}
+
+{% block content %}
+<div class="uk-section uk-flex uk-flex-middle" uk-height-viewport>
+  <div class="uk-width-1-1">
+      <div class="uk-container">
+          <div class="uk-grid-margin uk-grid uk-grid-stack" uk-grid>
+              <div class="uk-width-1-1@m">
+                  <div class="uk-margin uk-width-large uk-margin-auto uk-card uk-card-default uk-card-body uk-box-shadow-large">
+                      <h3 class="uk-card-title uk-text-center">Sign In</h3>
+                      <form method="POST">
+                          {% csrf_token %}
+                          <div class="uk-margin">
+                              <div class="uk-inline uk-width-1-1">
+                                  <span class="uk-form-icon" uk-icon="icon: user"></span>
+                                  <input class="uk-input uk-form-large" type="text" name="username" id="username" placeholder="Username" required>
+                              </div>
+                          </div>
+                          <div class="uk-margin">
+                              <div class="uk-inline uk-width-1-1">
+                                  <span class="uk-form-icon" uk-icon="icon: lock"></span>
+                                  <input class="uk-input uk-form-large" type="password" name="password" id="password" placeholder="Password" required>
+                              </div>
+                          </div>
+                          <div class="uk-margin">
+                              <button class="uk-button uk-button-primary uk-button-large uk-width-1-1" type="submit">Sign In</button>
+                          </div>
+                          {% if error %}
+                          <div class="uk-alert-danger" uk-alert>
+                              <p>{{ error }}</p>
+                          </div>
+                          {% endif %}
+                      </form>
+                      <div class="uk-text-small uk-text-center">
+                          Not registered? <a href="{% url 'signup' %}">Create an account</a>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+</div>
+{% endblock content %}

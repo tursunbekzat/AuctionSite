@@ -1,97 +1,61 @@
-  /* Custom styles for navbar */
-  .uk-navbar-container {
-      background-color: #ffffff;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
-  }
-
-  .uk-navbar-left {
-      margin-left: 30px;
-  }
-
-  .uk-navbar-nav > li > a {
-      color: #333;
-      font-weight: 600;
-      text-transform: uppercase;
-      padding: 0 20px;
-      transition: all 0.3s ease;
-  }
-
-  .uk-navbar-nav > li:hover > a,
-  .uk-navbar-nav > li > a:focus {
-      color: #1e87f0;
-      background-color: rgba(30, 135, 240, 0.1);
-      transform: translateY(-2px);
-  }
-
-  .uk-navbar-nav > li.uk-active > a {
-      color: #1e87f0;
-      border-bottom: 2px solid #1e87f0;
-  }
-
-  /* Responsive adjustments */
-  @media (max-width: 960px) {
-      .uk-navbar-left {
-          margin-left: 15px;
-      }
-    
-      .uk-navbar-nav > li > a {
-          padding: 0 15px;
-      }
-  }
-
-  /* Modern card styles */
-  .uk-card {
-      border-radius: 10px;
-      transition: all 0.3s ease;
-  }
-
-  .uk-card:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 10px 20px rgba(0,0,0,0.1);
-  }
-
-  /* Enhance typography */
-  h1, h2, h3 {
-      font-weight: 700;
-      letter-spacing: -0.5px;
-  }
-
-  .uk-text-lead {
-      font-weight: 300;
-      line-height: 1.6;
-  }
-
-  /* Improve button styles */
-  .uk-button {
-      border-radius: 30px;
-      text-transform: uppercase;
-      font-weight: 600;
-      transition: all 0.3s ease;
-  }
-
-  .uk-button:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-  }
-
-  /* Add subtle animations */
-  .uk-animation-slide-top {
-      animation-duration: 0.8s;
-  }
-
-  .uk-animation-fade {
-      animation-duration: 1s;
-  }
-
-  /* Enhance section styles */
-  .uk-section {
-      padding: 60px 0;
-  }
-
+  /* Custom styles for sign-in page */
   .uk-section-muted {
-      background-color: #f8f9fa;
+      background: #ffffff;
+  }
+  
+  .uk-card-default {
+      border-radius: 15px;
+      box-shadow: 0 15px 35px rgba(50, 50, 93, 0.1), 0 5px 15px rgba(0, 0, 0, 0.07);
+      transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
   }
 
-  .uk-section-primary {
-      background: linear-gradient(135deg, #1e87f0, #5b6dee);
+  .uk-card-default:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 20px 40px rgba(50, 50, 93, 0.15), 0 10px 20px rgba(0, 0, 0, 0.1);
+  }
+
+  .uk-input {
+      border-radius: 25px;
+      transition: box-shadow 0.3s ease-in-out;
+  }
+
+  .uk-input:focus {
+      box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.25);
+  }
+
+  .uk-button-primary {
+      border-radius: 25px;
+      background: linear-gradient(45deg, #4e54c8, #8f94fb);
+      transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+  }
+
+  .uk-button-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 7px 14px rgba(50, 50, 93, 0.1), 0 3px 6px rgba(0, 0, 0, 0.08);
+  }
+
+  .uk-form-icon {
+      color: #4e54c8;
+  }
+
+  .uk-card-title {
+      color: #4e54c8;
+      font-weight: 600;
+  }
+
+  .uk-alert-danger {
+      border-radius: 10px;
+      background-color: #fff5f5;
+      color: #ff3860;
+      border-color: #ff3860;
+  }
+
+  a {
+      color: #4e54c8;
+      transition: color 0.3s ease-in-out;
+  }
+
+  a:hover {
+      color: #8f94fb;
+      text-decoration: none;
   }

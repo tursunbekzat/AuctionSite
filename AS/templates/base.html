@@ -18,14 +18,14 @@
     <!-- Navigation Bar -->
     <nav class="uk-navbar-container" uk-navbar>
         <div class="uk-navbar-left">
-            <a class="uk-navbar-item uk-logo" href="#">
+            <a class="uk-navbar-item uk-logo" href="{% url 'home' %}">
                 <img src="{% static 'images/logo.png' %}" alt="Logo" width="40" height="40">
                 AuctionSite
             </a>
         </div>
         <div class="uk-navbar-right">
             <ul class="uk-navbar-nav">
-                <li><a href="#">🏠 Home</a></li>
+                <li><a href="{% url 'home' %}">🏠 Home</a></li>
                 <li><a href="#">🔨 Auctions</a></li>
                 <li><a href="{% url 'signup' %}">📝 Sign Up</a></li>
                 <li><a href="{% url 'signin' %}">🔑 Sign In</a></li>
@@ -41,13 +41,9 @@
     </nav>
     {% endblock navbar %}
 
-    {% block main_content %}
     <!-- Main Content Section -->
-    <div class="uk-container">
-        {% block content %}
-        {% endblock %}
-    </div>
-    {% endblock main_content %}
+    {% block content %}
+    {% endblock %}
 
     {% block footer %}
     <!-- Footer -->
