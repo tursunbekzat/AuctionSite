@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Profile</title>
+</head>
+<body>
+    <h1>Welcome, {{ user.username }}!</h1>
+    <p>Email: {{ user.email }}</p>
+    <p>Date joined: {{ user.date_joined }}</p>
+    <a href="{% url 'my_auctions' %}">My Auctions</a> | 
+    <a href="{% url 'my_bids' %}">My Bids</a>
+</body>
+</html>
