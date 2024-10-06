@@ -25,7 +25,7 @@ def signup_view(request):
     else:
         form = UserRegistrationSerializer()
 
-    return render(request, 'auth/signup.html', {'form': form})
+    return render(request, 'authenticate/sign_up.html', {'form': form})
 
 # Вход пользователя
 def signin_view(request):
@@ -45,8 +45,8 @@ def signin_view(request):
             response.set_cookie('jwt', access_token)
             return response
         else:
-            return render(request, 'auth/signin.html', {'error': 'Неверные учетные данные'})
-    return render(request, 'auth/signin.html')
+            return render(request, 'authenticate/sign_in.html', {'error': 'Неверные учетные данные'})
+    return render(request, 'authenticate/sign_in.html')
 
 # Выход пользователя
 def signout_view(request):
