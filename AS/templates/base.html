@@ -26,11 +26,11 @@
         <div class="uk-navbar-right">
             <ul class="uk-navbar-nav">
                 <li><a href="{% url 'home' %}">🏠 Home</a></li>
-                <li><a href="#">🔨 Auctions</a></li>
+                <li><a href="{% url 'current_auctions' %}">🔨 Auctions</a></li>
                 <li><a href="{% url 'signup' %}">📝 Sign Up</a></li>
                 <li><a href="{% url 'signin' %}">🔑 Sign In</a></li>
                 {% if user.is_authenticated %}
-                <li><a href="#">➕ Create Auction</a></li>
+                <li><a href="{% url 'create_auction' %}">➕ Create Auction</a></li>
                 <li><a href="#">👤 My Profile</a></li>
                 <li><a href="#">📦 My Auction</a></li>
                 <li><a href="#">💰 My Bids</a></li>
