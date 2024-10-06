@@ -13,24 +13,26 @@
     <nav class="uk-navbar-container" uk-navbar>
         <div class="uk-navbar-left">
             <ul class="uk-navbar-nav">
-                <!-- <li><a href="{% url 'home' %}">Home</a></li> -->
+                {% comment %}<li><a href="{% url 'home' %}">Home</a></li>
+                <li><a href="{% url 'auctions' %}">Auctions</a></li>
+                <li><a href="{% url 'signup' %}">Sign Up</a></li>
+                <li><a href="{% url 'login' %}">Sign In</a></li>
+                {% if user.is_authenticated %}
+                    <li><a href="{% url 'create_auction' %}">Create Auction</a></li>
+                    <li><a href="{% url 'profile' %}">My Profile</a></li>
+                    <li><a href="{% url 'my_auction' %}">My Auction</a></li>
+                    <li><a href="{% url 'my_bids' %}">My Bids</a></li>
+                    <li><a href="{% url 'logout' %}">Sign Out</a></li>
+                {% endif %}{% endcomment %}
                 <li><a href="#">Home</a></li>
-                <!-- <li><a href="{% url 'auctions' %}">Auctions</a></li> -->
                 <li><a href="#">Auctions</a></li>
-                <!-- <li><a href="{% url 'signup' %}">Sign Up</a></li> -->
                 <li><a href="#">Sign Up</a></li>
-                <!-- <li><a href="{% url 'login' %}">Sign In</a></li> -->
                 <li><a href="#">Sign In</a></li>
                 {% if user.is_authenticated %}
-                    <!-- <li><a href="{% url 'create_auction' %}">Create Auction</a></li> -->
                     <li><a href="#">Create Auction</a></li>
-                    <!-- <li><a href="{% url 'profile' %}">My Profile</a></li> -->
                     <li><a href="#">My Profile</a></li>
-                    <!-- <li><a href="{% url 'my_auction' %}">My Auction</a></li> -->
                     <li><a href="#">My Auction</a></li>
-                    <!-- <li><a href="{% url 'my_bids' %}">My Bids</a></li> -->
                     <li><a href="#">My Bids</a></li>
-                    <!-- <li><a href="{% url 'logout' %}">Sign Out</a></li> -->
                     <li><a href="#">Sign Out</a></li>
                 {% endif %}
             </ul>
