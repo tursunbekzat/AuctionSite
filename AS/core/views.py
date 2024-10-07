@@ -16,10 +16,12 @@ def current_auctions_view(request):
     auctions = Product.objects.filter(end_time__gt=timezone.now()).distinct().order_by('-created_at')
     
     context = {
-        'auctions': auctions
+        'auctions': auctions,
+        'title': 'Current Auctions',
+        'no_auctions': 'No active auctions at the moment. Check back later!',
     }
     
-    return render(request, 'core/current_auctions.html', context)
+    return render(request, 'core/auctions.html', context)
 
 
 @login_required

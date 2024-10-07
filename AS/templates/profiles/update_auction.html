@@ -1,19 +1,154 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Update Auction: {{ auction.name }}</title>
-</head>
-<body>
-    <h1>Update Auction: {{ auction.name }}</h1>
-    
-    <form method="POST" enctype="multipart/form-data">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <button type="submit">Update Auction</button>
-    </form>
-    
-    <a href="{% url 'my_auctions' %}">Back to My Auctions</a>
-</body>
-</html>
+{% extends 'base.html' %}
+
+{% block title %}
+  Update Auction: {{ auction.name }}
+{% endblock %}
+
+{% load static %}
+
+{% block content %}
+  <section class="uk-section">
+    <div class="uk-container uk-container-small">
+      <div class="create-form">
+        <h2>Update Auction: {{ auction.name }}</h2>
+        <form method="POST" enctype="multipart/form-data" class="uk-form-stacked">
+          {% csrf_token %}
+
+          <div class="form-grid">
+            <div class="form-group">
+              <label for="{{ form.name.id_for_label }}">{{ form.name.label }}</label>
+              {{ form.name }}
+              {% if form.name.help_text %}
+                <small>{{ form.name.help_text }}</small>
+              {% endif %}
+              {% for error in form.name.errors %}
+                <span class="uk-text-danger">{{ error }}</span>
+              {% endfor %}
+            </div>
+
+            <div class="form-group">
+              <label for="{{ form.category.id_for_label }}">{{ form.category.label }}</label>
+              {{ form.category }}
+              {% if form.category.help_text %}
+                <small>{{ form.category.help_text }}</small>
+              {% endif %}
+              {% for error in form.category.errors %}
+                <span class="uk-text-danger">{{ error }}</span>
+              {% endfor %}
+            </div>
+
+            <div class="form-group">
+              <label for="{{ form.starting_price.id_for_label }}">{{ form.starting_price.label }} in 💲</label>
+              {{ form.starting_price }}
+              {% if form.starting_price.help_text %}
+                <small>{{ form.starting_price.help_text }}</small>
+              {% endif %}
+              {% for error in form.starting_price.errors %}
+                <span class="uk-text-danger">{{ error }}</span>
+              {% endfor %}
+            </div>
+
+            <div class="form-group">
+              <label for="id_image" class="uk-form-label">Image</label>
+
+              <!-- Display the current image -->
+              <div class="uk-margin-small-top">
+                {% if auction.image %}
+                  <img src="{{ auction.image.url }}" alt="Current Image" class="uk-width-small uk-border-rounded" />
+                {% else %}
+                  <p>No image available</p>
+                {% endif %}
+              </div>
+
+              <!-- Display the current image link -->
+              <div class="uk-margin-small-top">
+                {% if auction.image %}
+                  <a href="{{ auction.image.url }}" class="uk-link-text">Current: {{ auction.image.name }}</a>
+                {% endif %}
+              </div>
+
+              <!-- Checkbox to clear the image -->
+              {% if auction.image %}
+              <div class="uk-margin-small-top uk-flex uk-flex-middle">
+                <input type="checkbox" name="image-clear" id="image-clear_id" class="uk-checkbox uk-margin-small-right" />
+                <label for="image-clear_id" class="uk-form-label">Clear</label>
+              </div>
+              {% endif %}
+
+              <!-- File input for changing the image -->
+              <div class="uk-margin-small-top">
+                <label for="id_image" class="uk-form-label">Browse:</label>
+                <input type="file" name="image" class="uk-input uk-margin-small-top" accept="image/*" id="id_image" />
+              </div>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="{{ form.description.id_for_label }}">{{ form.description.label }}</label>
+            {{ form.description }}
+            {% if form.description.help_text %}
+              <small>{{ form.description.help_text }}</small>
+            {% endif %}
+            {% for error in form.description.errors %}
+              <span class="uk-text-danger">{{ error }}</span>
+            {% endfor %}
+          </div>
+
+          {% if form.non_field_errors %}
+            <div class="uk-alert-danger" uk-alert>
+              <ul class="uk-list uk-list-bullet">
+                {% for error in form.non_field_errors %}
+                  <li>{{ error }}</li>
+                {% endfor %}
+              </ul>
+            </div>
+          {% endif %}
+
+          {% if form.errors %}
+            <div class="uk-alert-danger" uk-alert>
+              <h3>Please correct the following errors:</h3>
+              <ul class="uk-list uk-list-bullet">
+                {% for field in form %}
+                  {% for error in field.errors %}
+                    <li>
+                      <strong>{{ field.label }}:</strong> {{ error }}
+                    </li>
+                  {% endfor %}
+                {% endfor %}
+              </ul>
+            </div>
+          {% endif %}
+
+          <div class="form-group">
+            <label for="{{ form.end_time.id_for_label }}">{{ form.end_time.label }}</label>
+            {{ form.end_time }}
+            {% if form.end_time.help_text %}
+              <small>{{ form.end_time.help_text }}</small>
+            {% endif %}
+            {% for error in form.end_time.errors %}
+              <span class="uk-text-danger">{{ error }}</span>
+            {% endfor %}
+          </div>
+
+          <div class="form-group">
+            <label for="{{ form.current_price.id_for_label }}">{{ form.current_price.label }}</label>
+            {{ form.current_price }}
+            {% if form.current_price.help_text %}
+              <small>{{ form.current_price.help_text }}</small>
+            {% endif %}
+            {% for error in form.current_price.errors %}
+              <span class="uk-text-danger">{{ error }}</span>
+            {% endfor %}
+          </div>
+
+          <div class="form-group">
+            <button type="submit" class="uk-button uk-button-primary">Update Auction</button>
+          </div>
+        </form>
+        <div class="uk-margin-top">
+          <a href="{% url 'my_auctions' %}" class="uk-button uk-button-default">Back to My Auctions</a>
+        </div>
+      </div>
+    </div>
+  </section>
+{% endblock %}
