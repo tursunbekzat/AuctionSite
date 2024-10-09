@@ -5,8 +5,55 @@ from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
 from core.models import Product
 from payment.models import Payment
-
+from django.contrib import messages
+from django.contrib.auth.decorators import login_required
 stripe.api_key = settings.STRIPE_SECRET_KEY
+
+
+@login_required
+def top_up_balance(request):
+    if request.method == 'POST':
+        amount = request.POST.get('amount')
+        if amount:
+            try:
+                # Создаем платеж для пополнения баланса
+                payment = Payment.objects.create(
+                    user=request.user,
+                    amount=float(amount),
+                    status='pending'  # Измените статус после обработки платежа
+                )
+                # Логика реальной обработки платежа здесь (интеграция с платежной системой)
+
+                # Предположим, что оплата прошла успешно
+                payment.status = 'completed'
+                payment.save()
+
+                # Обновляем баланс пользователя
+                request.user.balance += payment.amount
+                request.user.save()
+
+                messages.success(request, 'Ваш баланс успешно пополнен.')
+                return redirect('check_balance')
+
+            except Exception as e:
+                messages.error(request, 'Произошла ошибка при пополнении баланса.')
+    
+    return render(request, 'payments/top_up_balance.html')
+
+
+@login_required
+def check_balance(request):
+    # Отображаем текущий баланс пользователя
+    balance = request.user.balance
+    transactions = Payment.objects.filter(user=request.user).order_by('-created_at')
+
+    context = {
+        'balance': balance,
+        'transactions': transactions
+    }
+
+    return render(request, 'payments/check_balance.html', context)
+
 
 def create_checkout_session(request, product_id):
     product = get_object_or_404(Product, id=product_id)
