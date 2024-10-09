@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     'core',
     'authenticate',
     'profiles',
+    'payment',
     'rest_framework',
     'rest_framework_simplejwt',
 ]
@@ -143,3 +144,8 @@ SIMPLE_JWT = {
     'ACCESS_TOKEN_LIFETIME': timedelta(minutes=30),
     'REFRESH_TOKEN_LIFETIME': timedelta(days=1),
 }
+
+import os
+# Убедитесь, что вы добавили ваши ключи в переменные окружения
+STRIPE_TEST_PUBLIC_KEY = os.environ.get('STRIPE_TEST_PUBLIC_KEY')
+STRIPE_TEST_SECRET_KEY = os.environ.get('STRIPE_TEST_SECRET_KEY')
