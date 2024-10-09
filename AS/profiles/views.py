@@ -14,13 +14,24 @@ def my_profile(request):
 @login_required
 def my_auctions(request):
     auctions = Product.objects.filter(author=request.user)
-    return render(request, 'profiles/my_auctions.html', {'auctions': auctions})
+    context = {
+        'auctions': auctions,
+        'title': 'My Auctions',
+        'no_auctions': 'You have not created any auctions yet.',
+    }
+        
+    return render(request, 'core/auctions.html', context)
 
 
 @login_required
 def my_bids(request):
-    bids = Bid.objects.filter(user=request.user)
-    return render(request, 'profiles/my_bids.html', {'bids': bids})
+    auctions = Product.objects.filter(bids__user=request.user).distinct()
+    context = {
+        'auctions': auctions,
+        'title': 'My Bids',
+        'no_auctions': 'You have not placed any bids yet.',
+    }
+    return render(request, 'core/auctions.html', context)
 
 
 # Изменение ставки

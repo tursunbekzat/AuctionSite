@@ -1,0 +1,292 @@
+/* General Reset */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+/* BODY STYLES */
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: #f8f9fa;
+    background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%231e87f0' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+main {
+    flex: 1;
+}
+
+footer {
+    background-color: #f8f9fa;
+    padding: 1.25rem 0;
+    text-align: center;
+    margin-top: auto;
+}
+
+footer p, footer a {
+    margin: 0.3125rem 0;
+    color: #000000;
+    text-decoration: none;
+}
+
+footer a:hover {
+    text-decoration: underline;
+}
+
+/* NAVBAR STYLES */
+.uk-navbar-container {
+    background-color: #fff;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+.uk-navbar-left {
+    margin-left: 2rem;
+}
+
+.uk-navbar-nav > li > a {
+    color: #333;
+    font-weight: 600;
+    text-transform: uppercase;
+    padding: 0 1.25rem;
+    transition: color 0.3s ease, background-color 0.3s ease, transform 0.3s ease;
+}
+
+.uk-navbar-nav > li:hover > a,
+.uk-navbar-nav > li > a:focus {
+    color: #1e87f0;
+    background-color: rgba(30, 135, 240, 0.1);
+    transform: translateY(-2px);
+}
+
+.uk-navbar-nav > li.uk-active > a {
+    color: #1e87f0;
+    border-bottom: 2px solid #1e87f0;
+}
+
+/* LABELS */
+.uk-label {
+    margin-left: 10px;
+}
+
+
+/* RESPONSIVE ADJUSTMENTS */
+@media (max-width: 960px) {
+    .uk-navbar-left {
+        margin-left: 1rem;
+    }
+
+    .uk-navbar-nav > li > a {
+        padding: 0 1rem;
+    }
+}
+
+/* CARD STYLES */
+.uk-card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+}
+
+.uk-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+/* CARD MEDIA STYLES */
+.uk-card-media-top {
+    height: 200px;
+    overflow: hidden;
+}
+
+.uk-card-media-top img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* CARD BODY AND TITLE */
+.uk-card-body {
+    padding: 20px;
+}
+
+.uk-card-title {
+    font-size: 1.5rem;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+/* BUTTON STYLES */
+.uk-button {
+    font-weight: 600;
+    text-transform: uppercase;
+    border-radius: 25px;
+    /* padding: 10px 30px; */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    margin-top: 10px;
+}
+
+.uk-input {
+    margin-top: 10px;
+    border-radius: 5px;
+}
+
+.uk-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.uk-button-primary {
+    background-color: #1e87f0;
+    box-shadow: 0 4px 6px rgba(30, 135, 240, 0.2);
+}
+
+.uk-button-primary:hover {
+    background-color: #0f7ae5;
+}
+
+.uk-button-danger {
+    background-color: #f0506e;
+    box-shadow: 0 4px 6px rgba(240, 80, 110, 0.2);
+}
+
+.uk-button-danger:hover {
+    background-color: #ee395b;
+}
+
+.uk-button-secondary {
+    background-color: #f0506e;
+    animation: glow 2s infinite;
+}
+
+.uk-button-secondary:hover {
+    background-color: #e03053;
+    transform: scale(1.05);
+    box-shadow: 0 0 20px rgba(240, 80, 110, 0.5);
+}
+
+/* TYPOGRAPHY AND TEXT STYLES */
+h1, h2, h3 {
+    font-weight: 700;
+    color: #333;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+    letter-spacing: -0.5px;
+}
+
+.uk-text-lead {
+    font-weight: 300;
+    line-height: 1.6;
+}
+
+/* FORMS */
+.create-form {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 40px;
+    background-color: #fff;
+    border-radius: 15px;
+    box-shadow: 0 5px 25px rgba(0, 0, 0, 0.1);
+}
+
+.create-form h2 {
+    text-align: center;
+    color: #1e87f0;
+    margin-bottom: 40px;
+    font-size: 36px;
+    font-weight: 700;
+}
+
+.create-form input,
+.create-form select,
+.create-form textarea {
+    width: 100%;
+    padding: 6px;
+    border-radius: 10px;
+    border: 1px solid #e5e5e5;
+    font-size: 18px;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Custom styles for the clear checkbox in update_auction.html */
+.create-form .uk-checkbox[name="image-clear"] {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    background-color: #fff;
+    border: 2px solid #1e87f0;
+    cursor: pointer;
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+.create-form .uk-checkbox[name="image-clear"]:checked {
+    background-color: #1e87f0;
+    border-color: #1e87f0;
+}
+
+.create-form input:focus,
+.create-form select:focus,
+.create-form textarea:focus {
+    border-color: #1e87f0;
+    box-shadow: 0 0 0 0.2rem rgba(30, 135, 240, 0.25);
+}
+
+.create-form textarea {
+    min-height: 200px;
+}
+
+.create-form button[type="submit"] {
+    width: 100%;
+    padding: 15px;
+    background-color: #1e87f0;
+    color: #fff;
+    border: none;
+    border-radius: 30px;
+    font-size: 20px;
+    text-transform: uppercase;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.create-form button[type="submit"]:hover {
+    background-color: #0e6ecd;
+    transform: translateY(-2px);
+}
+
+/* ANIMATIONS */
+@keyframes float {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-20px); }
+    100% { transform: translateY(0px); }
+}
+
+.uk-card {
+    animation: float 6s ease-in-out infinite;
+}
+
+@keyframes glow {
+    0% { box-shadow: 0 0 5px rgba(240, 80, 110, 0.5); }
+    50% { box-shadow: 0 0 20px rgba(240, 80, 110, 0.8); }
+    100% { box-shadow: 0 0 5px rgba(240, 80, 110, 0.5); }
+}
+
+/* RESPONSIVE ADJUSTMENTS */
+@media (max-width: 960px) {
+    .uk-section {
+        padding: 40px 0;
+    }
+}
+
+@media (min-width: 768px) {
+    .create-form .form-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+    }
+}
